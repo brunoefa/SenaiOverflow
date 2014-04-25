@@ -47,13 +47,13 @@ public class RespostaController extends HttpServlet {
 			
 			if ("positivo".equals(pontuacao)) {
 				resposta.setPositivo(resposta.getPositivo() + 1);
-			}else if ("negativo".equals(pontuacao)) {
+			} else if ("negativo".equals(pontuacao)) {
 				resposta.setNegativo(resposta.getNegativo() + 1);
 			}
 			
 			dao.qualificar(resposta);
 			
-			request.setAttribute("id", String.valueOf(resposta.getId()));
+			request.setAttribute("id", String.valueOf(resposta.getPerguntaId()));
 			listar(request, response);
 		} catch (NumberFormatException e) { }
 	}
@@ -79,7 +79,7 @@ public class RespostaController extends HttpServlet {
 		RequestDispatcher rd = request.getRequestDispatcher("respostas.jsp");
 		rd.forward(request, response);
 	}
-    
+
 	private void responder(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
 		Resposta resposta = new Resposta();
 		resposta.setResposta(request.getParameter("resposta"));

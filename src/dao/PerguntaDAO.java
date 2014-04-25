@@ -68,8 +68,7 @@ public class PerguntaDAO {
 	public Pergunta getPergunta(Integer id) {
 		try {
 			Pergunta pergunta = new Pergunta();
-			PreparedStatement stmt = this.connection
-					.prepareStatement("select * from pergunta where id = ?");
+			PreparedStatement stmt = this.connection.prepareStatement("select * from pergunta where id = ?");
 			stmt.setInt(1, id);
 			ResultSet rs = stmt.executeQuery();
 
